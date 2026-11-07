@@ -2,10 +2,9 @@
 
 Ingyenes, nyílt forráskódú Android-alkalmazás, amely egy nyilvános tiltólista alapján felismeri a reklámokkal teli, kéretlen alkalmazásokat (kamu „frissítők”, „vírusirtók”, „tisztítók”, reklámos kamerák, PDF/QR-olvasó klónok, játékok), és segít eltávolítani őket.
 
-Üzemeltető: **TELEFONVILÁG Kereskedelmi és Szolgáltató Kft.** (4033 Debrecen, Jázmin utca 8., [telefonvilag.hu](https://telefonvilag.hu))
-Fejlesztő: **Csákó Attila** ([csakoattila.hu](https://csakoattila.hu))
+Fejlesztő és üzemeltető: **Csákó Attila** ([csakoattila.hu](https://csakoattila.hu))
 
-Működés és a teljes aktuális tiltólista: **https://telefonvilag.hu/adware/**
+Működés és a teljes aktuális tiltólista: **https://csakoattila.hu/adware/**
 
 ## Mit csinál?
 
@@ -13,8 +12,8 @@ Működés és a teljes aktuális tiltólista: **https://telefonvilag.hu/adware/
 - Találat esetén megmutatja, miért gyanús az app, és egy gombnyomással eltávolíthatod. **Az eltávolítást mindig a rendszer saját megerősítő ablaka kéri**, csendes törlés nincs.
 - Kb. 15 percenként a háttérben megnézi, települt-e új alkalmazás, és ha tiltólistás, értesítést küld „Törlés” gombbal.
 - Naponta letölti a friss tiltólistát, és minden appot újraellenőriz.
-- Bármelyik appot be lehet jelenteni gyanúsként. A bejelentést a szerviz átnézi, és jóváhagyás után az app felkerül a közös listára.
-- Rejtett szervizmód a szerviz munkatársainak, amellyel bármelyik app közvetlenül felvehető a listára.
+- Bármelyik appot be lehet jelenteni gyanúsként. A bejelentést a fejlesztő átnézi, és jóváhagyás után az app felkerül a közös listára.
+- Rejtett szervizmód a lista karbantartóinak, amellyel bármelyik app közvetlenül felvehető a listára.
 
 ## Adatvédelem
 
@@ -24,7 +23,7 @@ Az app **nem gyűjt személyes adatot**, nincs benne reklám, analitika vagy fi�
 
 ```
 android/          Android Studio projekt (Kotlin, Jetpack Compose, WorkManager)
-server/adware/    PHP 8 + SQLite (vagy MySQL) modul a telefonvilag.hu/adware/ alá
+server/adware/    PHP 8 + SQLite (vagy MySQL) modul a csakoattila.hu/adware/ alá
   api/list.php          nyilvános tiltólista (JSON, ETag)
   api/suggest.php       ügyféljavaslat beküldése
   api/admin_login.php   szervizmód bejelentkezés (token)
@@ -40,7 +39,7 @@ server/adware/    PHP 8 + SQLite (vagy MySQL) modul a telefonvilag.hu/adware/ al
 
 1. Android Studio (Ladybug vagy újabb) → **Open** → `android` mappa.
 2. Az első Gradle-szinkron letölti a függőségeket.
-3. `app/build.gradle.kts`-ben állítsd be a `GITHUB_URL`-t (és ha más a szerver címe, az `API_BASE`-t).
+3. `app/build.gradle.kts`-ben állítsd be a `CONTACT_EMAIL`-t és a `GITHUB_URL`-t (és ha más a szerver címe, az `API_BASE`-t).
 4. **Build → Generate Signed App Bundle / APK → APK**, saját aláírókulccsal.
 
 Követelmény: Android 8.0 (API 26) vagy újabb.
@@ -51,11 +50,11 @@ Az APK a GitHub Releases-be kerül, nem a Play Áruházba, mert az app a `QUERY_
 
 Követelmény: PHP 8.0+ `pdo_sqlite` bővítménnyel (a legtöbb tárhelyen alapból megvan). Adatbázis-szerver nem kell.
 
-1. Másold a `server/adware` mappát a webtárhelyre, hogy `https://telefonvilag.hu/adware/` legyen.
-2. `inc/config.sample.php` → `inc/config.php`, és írd át az `ip_salt` értékét és a linkeket.
+1. Másold a `server/adware` mappát a webtárhelyre, hogy `https://csakoattila.hu/adware/` legyen.
+2. `inc/config.sample.php` → `inc/config.php`, és írd át az `ip_salt`, a `contact_email` értékét és a linkeket.
 3. A `data/` mappa legyen írható a webszerver számára (pl. `chmod 775 data`).
-4. Nyisd meg a `https://telefonvilag.hu/adware/api/list.php` címet. Az első hívás létrehozza a `data/adware.sqlite` fájlt a kezdő tiltólistával.
-5. Nyisd meg a `https://telefonvilag.hu/adware/admin/` oldalt, és hozd létre az admin fiókot.
+4. Nyisd meg a `https://csakoattila.hu/adware/api/list.php` címet. Az első hívás létrehozza a `data/adware.sqlite` fájlt a kezdő tiltólistával.
+5. Nyisd meg a `https://csakoattila.hu/adware/admin/` oldalt, és hozd létre az admin fiókot.
 
 Az `inc/` és a `data/` mappát `.htaccess` védi (Apache). Nginx alatt tiltsd le kézzel:
 `location ~ ^/adware/(inc|data)/ { deny all; }`

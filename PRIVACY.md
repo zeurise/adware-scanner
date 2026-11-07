@@ -1,6 +1,6 @@
 # Adatkezelési tájékoztató – Adware Scanner
 
-**Adatkezelő:** TELEFONVILÁG Kereskedelmi és Szolgáltató Kft., 4033 Debrecen, Jázmin utca 8., kapcsolat@telefonvilag.hu, +36 70 772 2607
+**Adatkezelő:** Csákó Attila (csakoattila.hu), EMAIL@csakoattila.hu
 
 ## Mit nem gyűjt az alkalmazás?
 
@@ -23,7 +23,7 @@ A bejelentések célja a közös tiltólista bővítése (jogalap: jogos érdek)
 
 ## Szervizmód
 
-A szerviz munkatársai a saját fiókjukkal léphetnek be. A belépéshez tartozó tokent az alkalmazás csak a telefonon, privát tárolóban tartja. A szerver ilyenkor a telefon gyártóját és típusát rögzíti (pl. „Samsung SM-A266B”), hogy az elveszett eszközök belépése visszavonható legyen.
+A lista karbantartói a saját fiókjukkal léphetnek be. A belépéshez tartozó tokent az alkalmazás csak a telefonon, privát tárolóban tartja. A szerver ilyenkor a telefon gyártóját és típusát rögzíti (pl. „Samsung SM-A266B”), hogy az elveszett eszközök belépése visszavonható legyen.
 
 ## Engedélyek
 
@@ -35,4 +35,4 @@ A szerviz munkatársai a saját fiókjukkal léphetnek be. A belépéshez tartoz
 | `INTERNET` | tiltólista letöltése, bejelentés |
 | `REQUEST_IGNORE_BATTERY_OPTIMIZATIONS` | kérés, hogy a rendszer ne állítsa le a háttérellenőrzést |
 
-Kérdés vagy törlési kérelem: kapcsolat@telefonvilag.hu
+Kérdés vagy törlési kérelem: EMAIL@csakoattila.hu
